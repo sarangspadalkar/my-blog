@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://sarangspadalkar.github.io/my-blog/blog</id>
+    <title>My Site Blog</title>
+    <updated>2024-08-14T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://sarangspadalkar.github.io/my-blog/blog"/>
+    <subtitle>My Site Blog</subtitle>
+    <icon>https://sarangspadalkar.github.io/my-blog/https://github.com/sarangspadalkar.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Hosting a Static Webpage on AWS S3]]></title>
+        <id>https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3</id>
+        <link href="https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3"/>
+        <updated>2024-08-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this tutorial, we'll walk through the steps to host a static website on AWS S3. AWS S3 (Simple Storage Service) is an object storage service that offers scalability, data availability, security, and performance. It's a great option for hosting static websites.]]></summary>
+        <content type="html"><![CDATA[<p>In this tutorial, we'll walk through the steps to host a static website on AWS S3. AWS S3 (Simple Storage Service) is an object storage service that offers scalability, data availability, security, and performance. It's a great option for hosting static websites.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-1-create-an-s3-bucket">Step 1: Create an S3 Bucket<a href="https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3#step-1-create-an-s3-bucket" class="hash-link" aria-label="Direct link to Step 1: Create an S3 Bucket" title="Direct link to Step 1: Create an S3 Bucket">​</a></h2>
+<p>First, you need to create an S3 bucket where your website files will be stored.</p>
+<ol>
+<li>Log in to the <a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">AWS Management Console</a>.</li>
+<li>Navigate to the <strong>S3</strong> service.</li>
+<li>Click on <strong>Create bucket</strong>.</li>
+<li>Provide a unique name for your bucket (e.g., <code>my-static-website</code>).</li>
+<li>Select a region close to your target audience.</li>
+<li>Uncheck the <strong>Block all public access</strong> option to allow public access to your website. You will need to acknowledge this change.</li>
+<li>Click on <strong>Create bucket</strong>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-2-upload-your-website-files">Step 2: Upload Your Website Files<a href="https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3#step-2-upload-your-website-files" class="hash-link" aria-label="Direct link to Step 2: Upload Your Website Files" title="Direct link to Step 2: Upload Your Website Files">​</a></h2>
+<p>Now that you have an S3 bucket, you can upload your static website files (HTML, CSS, JS, etc.).</p>
+<ol>
+<li>Click on your newly created bucket to open it.</li>
+<li>Click on the <strong>Upload</strong> button.</li>
+<li>Drag and drop your website files into the upload area or click <strong>Add files</strong>.</li>
+<li>Click <strong>Upload</strong> to transfer the files to your S3 bucket.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-3-configure-the-bucket-for-static-website-hosting">Step 3: Configure the Bucket for Static Website Hosting<a href="https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3#step-3-configure-the-bucket-for-static-website-hosting" class="hash-link" aria-label="Direct link to Step 3: Configure the Bucket for Static Website Hosting" title="Direct link to Step 3: Configure the Bucket for Static Website Hosting">​</a></h2>
+<p>Next, you'll configure the bucket to serve the files as a static website.</p>
+<ol>
+<li>In your bucket, go to the <strong>Properties</strong> tab.</li>
+<li>Scroll down to the <strong>Static website hosting</strong> section and click <strong>Edit</strong>.</li>
+<li>Select <strong>Enable</strong> for static website hosting.</li>
+<li>In the <strong>Index document</strong> field, enter the name of your homepage file, usually <code>index.html</code>.</li>
+<li>(Optional) In the <strong>Error document</strong> field, enter the name of your error page (e.g., <code>404.html</code>).</li>
+<li>Click <strong>Save changes</strong>.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="step-4-set-bucket-policy-to-make-the-website-public">Step 4: Set Bucket Policy to Make the Website Public<a href="https://sarangspadalkar.github.io/my-blog/blog/2024/08/14/host-static-website-on-aws-s3#step-4-set-bucket-policy-to-make-the-website-public" class="hash-link" aria-label="Direct link to Step 4: Set Bucket Policy to Make the Website Public" title="Direct link to Step 4: Set Bucket Policy to Make the Website Public">​</a></h2>
+<p>To allow public access to your website, you need to set a bucket policy.</p>
+<ol>
+<li>Go to the <strong>Permissions</strong> tab of your S3 bucket.</li>
+<li>Scroll down to <strong>Bucket Policy</strong> and click <strong>Edit</strong>.</li>
+<li>Add the following policy to make the content publicly readable:</li>
+</ol>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">{</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "Version": "2012-10-17",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  "Statement": [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      "Sid": "PublicReadGetObject",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      "Effect": "Allow",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      "Principal": "*",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      "Action": "s3:GetObject",</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      "Resource": "arn:aws:s3:::your-bucket-name/*"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  ]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>]]></content>
+        <author>
+            <name>Sarang Padalkar</name>
+            <uri>https://github.com/sarangspadalkar</uri>
+        </author>
+        <category label="aws" term="aws"/>
+        <category label="s3" term="s3"/>
+        <category label="static website" term="static website"/>
+        <category label="hosting" term="hosting"/>
+    </entry>
+</feed>
