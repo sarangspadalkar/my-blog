@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_blog=self.webpackChunkmy_blog||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Hosting a Static Webpage on AWS S3","permalink":"/my-blog/blog/2024/08/14/host-static-website-on-aws-s3","unlisted":false,"date":"2024-08-14T00:00:00.000Z"}]}')}}]);
